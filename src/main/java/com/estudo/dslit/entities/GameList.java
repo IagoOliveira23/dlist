@@ -7,17 +7,18 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_game_list")
 public class GameList {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String name;
 
-    public GameList(){
+    public GameList() {
     }
 
-    public GameList(Long id, String nome) {
+    public GameList(Long id, String name) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
     }
 
     public Long getId() {
@@ -28,24 +29,30 @@ public class GameList {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GameList gameList = (GameList) o;
-        return Objects.equals(id, gameList.id);
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        GameList other = (GameList) obj;
+        return Objects.equals(id, other.id);
+    }
 }
+
+
